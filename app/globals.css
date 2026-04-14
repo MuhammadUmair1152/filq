@@ -1,26 +1,294 @@
 @import "tailwindcss";
 
+/* ── Design Tokens ─────────────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary:       #08080a;
+  --bg-card:          #111113;
+  --bg-card-alt:      #17171a;
+  --bg-glass:         rgba(255,255,255,0.05);
+  --bg-pill:          rgba(30,30,40,0.72);
+
+  --text-primary:     #ffffff;
+  --text-muted:       rgba(255,255,255,0.55);
+  --text-muted-alt:   rgba(255,255,255,0.32);
+
+  --accent-lime:      #c6ff00;
+  --accent-lime-dark: #b0e000;
+  --border-subtle:    rgba(255, 255, 255, 0.08);
+  --border-card:      rgba(255, 255, 255, 0.06);
+
+  --radius-pill:      999px;
+  --radius-card:      24px;
+  --radius-card-lg:   32px;
+
+  --transition-fast:  150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base:  250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:  400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Reset & Base ───────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-outfit), 'Outfit', system-ui, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
+
+/* ── Typography ─────────────────────────────────────────────────────── */
+.font-serif-italic {
+  font-family: var(--font-baskerville), 'Libre Baskerville', Georgia, serif;
+  font-style: italic;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-outfit), 'Outfit', system-ui, sans-serif;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+/* ── Layout Utilities ───────────────────────────────────────────────── */
+.container-site {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2.5rem);
+}
+
+.section-spacing {
+  padding-block: clamp(5rem, 10vw, 9rem);
+}
+
+/* ── Pill / Badge ───────────────────────────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-pill);
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────── */
+.btn-lime {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--accent-lime);
+  color: #0B0B0B;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+  transition: background var(--transition-base), transform var(--transition-fast);
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+.btn-lime:hover {
+  background: var(--accent-lime-dark);
+  transform: translateY(-1px);
+}
+.btn-lime-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: #0B0B0B;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+  text-decoration: none;
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.btn-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem 0.55rem 1.2rem;
+  border-radius: var(--radius-pill);
+  background: #F5F7FF;
+  color: #0B0B0B;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-contact:hover {
+  background: #e0e2ec;
+  transform: translateY(-1px);
+}
+.btn-contact-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  background: #0B0B0B;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Cards ──────────────────────────────────────────────────────────── */
+.card {
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+}
+
+.card-lg {
+  border-radius: var(--radius-card-lg);
+}
+
+/* ── Gradient Glow ──────────────────────────────────────────────────── */
+.glow-blue {
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59, 120, 255, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.glow-purple {
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(120, 59, 255, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Underline Decorative ───────────────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, #F5F7FF 0%, rgba(245,247,255,0.7) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Navigation ─────────────────────────────────────────────────────── */
+.nav-link {
+  position: relative;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  transition: color var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.nav-link:hover {
+  color: var(--text-primary);
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent-lime);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+  transform-origin: left;
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Dividers ───────────────────────────────────────────────────────── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.22); }
+
+/* ── Animations ─────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.65s var(--transition-slow) both;
+}
+.animate-fade-in {
+  animation: fadeIn 0.5s ease both;
+}
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+.animate-delay-5 { animation-delay: 0.5s; }
