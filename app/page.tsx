@@ -4,6 +4,7 @@ import Marquee from "./components/sections/Marquee";
 import Whyfilq from "./components/sections/Whyfilq";
 import Stats from "./components/sections/Stats";
 import ServicesGrid from "./components/sections/ServicesGrid";
+import Cases from "./components/sections/Cases";
 import BannerCTA from "./components/sections/BannerCTA";
 import Portfolio from "./components/sections/Portfolio";
 import Industries from "./components/sections/Industries";
@@ -21,6 +22,7 @@ export default function Home() {
         <Whyfilq />
         <Stats />
         <ServicesGrid />
+        <Cases />
         <BannerCTA />
         <Portfolio />
         <Industries />

@@ -1,8 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 
-/* ─── Floating icon sets per hovered word ───────────────────────────── */
-const wordIcons: Record<string, { icon: string; color: string }[]> = {
+const wordIcons: Record<string, { icon: React.ReactNode; color: string; bgStyle?: React.CSSProperties }[]> = {
   brand: [
     { icon: "✦", color: "#a855f7" },
     { icon: "✧", color: "#c084fc" },
@@ -14,9 +13,21 @@ const wordIcons: Record<string, { icon: string; color: string }[]> = {
     { icon: "▤", color: "#16a34a" },
   ],
   "ux/ui design": [
-    { icon: "⬡", color: "#3b82f6" },
-    { icon: "◎", color: "#60a5fa" },
-    { icon: "⊕", color: "#2563eb" },
+    { /* Smartphone */
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>,
+      color: "#00e5ff",
+      bgStyle: { borderRadius: "50% 50% 50% 0", padding: "12px", background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)", border: "1px solid rgba(0,229,255,0.25)", boxShadow: "0 8px 32px rgba(0,229,255,0.15)" }
+    },
+    { /* Stack/Layers */
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg>,
+      color: "#00e5ff",
+      bgStyle: { borderRadius: "0 50% 50% 50%", padding: "12px", background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)", border: "1px solid rgba(0,229,255,0.25)", boxShadow: "0 8px 32px rgba(0,229,255,0.15)" }
+    },
+    { /* Grid */
+      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>,
+      color: "#00e5ff",
+      bgStyle: { borderRadius: "50% 50% 50% 0", padding: "12px", background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)", border: "1px solid rgba(0,229,255,0.25)", boxShadow: "0 8px 32px rgba(0,229,255,0.15)" }
+    },
   ],
 };
 
@@ -72,7 +83,10 @@ function AccentWord({ word, isHovered, onEnter, onLeave }: {
             animationDelay: floatPositions[i].delay,
             pointerEvents: "none",
             zIndex: 10,
-            filter: "drop-shadow(0 0 6px currentColor)",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            ...(ic.bgStyle ? ic.bgStyle : { filter: "drop-shadow(0 0 6px currentColor)" }),
           }}
         >
           {ic.icon}
@@ -135,15 +149,15 @@ export default function Hero() {
       {/* ── Radial gradient backgrounds ── */}
       <div aria-hidden style={{
         position: "absolute", inset: 0, pointerEvents: "none",
-        background: "radial-gradient(ellipse 90% 70% at 20% 50%, rgba(60,20,180,0.55) 0%, transparent 60%)",
+        background: "radial-gradient(ellipse 90% 70% at 20% 50%, rgba(20, 80, 255, 0.50) 0%, transparent 60%)",
       }}/>
       <div aria-hidden style={{
         position: "absolute", inset: 0, pointerEvents: "none",
-        background: "radial-gradient(ellipse 60% 60% at 70% 30%, rgba(30,10,100,0.4) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse 60% 60% at 70% 30%, rgba(10, 60, 220, 0.35) 0%, transparent 70%)",
       }}/>
       <div aria-hidden style={{
         position: "absolute", inset: 0, pointerEvents: "none",
-        background: "radial-gradient(ellipse 50% 40% at 50% 80%, rgba(80,20,200,0.2) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse 50% 40% at 50% 80%, rgba(0, 50, 200, 0.25) 0%, transparent 70%)",
       }}/>
 
       {/* ── Content ── */}
@@ -178,21 +192,23 @@ export default function Hero() {
           color: "#fff",
           textAlign: "center",
           margin: "0 auto",
-          maxWidth: "1150px", /* widened to prevent early wrapping */
+          maxWidth: "1400px", /* widened to prevent early wrapping */
         }}>
           {/* Line 1 */}
           Your design &amp; dev partner that unites
           <br className="hide-mobile" />
           
           {/* Line 2 */}
-          <span style={{ display: "inline-flex", alignItems: "center", gap: "0.2em", verticalAlign: "middle", margin: "0.15em 0" }}>
+          <span style={{ display: "inline-flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "0.2em", verticalAlign: "middle", margin: "0.15em 0" }}>
             <AccentWord word="brand" isHovered={hovered==="brand"} onEnter={()=>setHovered("brand")} onLeave={()=>setHovered(null)}/>
             <span style={{ fontWeight: 800 }}>, </span>
             <AccentWord word="website" isHovered={hovered==="website"} onEnter={()=>setHovered("website")} onLeave={()=>setHovered(null)}/>
             <span style={{ fontWeight: 800 }}>, </span>
-            <AccentWord word="ux/ui design" isHovered={hovered==="ux/ui design"} onEnter={()=>setHovered("ux/ui design")} onLeave={()=>setHovered(null)}/>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "0.2em", whiteSpace: "nowrap" }}>
+              <AccentWord word="ux/ui design" isHovered={hovered==="ux/ui design"} onEnter={()=>setHovered("ux/ui design")} onLeave={()=>setHovered(null)}/>
+              <span> into</span>
+            </span>
           </span>
-          {" "}into
           <br className="hide-mobile" />
           
           {/* Line 3 */}
@@ -309,52 +325,16 @@ export default function Hero() {
           <a
             href="#contact"
             id="hero-book-call"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0",
-              borderRadius: "999px",
-              overflow: "hidden",
-              textDecoration: "none",
-              boxShadow: "0 4px 30px rgba(196,255,0,0.25)",
-              transition: "transform 0.2s ease, box-shadow 0.2s ease",
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-2px) scale(1.02)";
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 40px rgba(196,255,0,0.4)";
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0) scale(1)";
-              (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 30px rgba(196,255,0,0.25)";
-            }}
+            className="hero-call-btn"
           >
             {/* Arrow icon square */}
-            <span style={{
-              width: "54px",
-              height: "54px",
-              background: "#c6ff00",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-            }}>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <span className="hero-call-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="hero-call-arrow">
                 <path d="M4 16L16 4M16 4H6M16 4V14" stroke="#0a0a0a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </span>
             {/* Text */}
-            <span style={{
-              padding: "0 1.75rem",
-              height: "54px",
-              display: "inline-flex",
-              alignItems: "center",
-              background: "#d4ff00",
-              fontWeight: 700,
-              fontSize: "1rem",
-              color: "#0a0a0a",
-              letterSpacing: "-0.01em",
-              whiteSpace: "nowrap",
-            }}>
+            <span className="hero-call-text">
               Book a Call
             </span>
           </a>
@@ -369,6 +349,61 @@ export default function Hero() {
       }}/>
 
       <style>{`
+        .hero-call-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          text-decoration: none;
+          box-shadow: 0 4px 30px rgba(196,255,0,0.25);
+          transition: all 0.3s ease;
+          border-radius: 99px; /* Outer shadow wrapper shape approx */
+        }
+        .hero-call-icon {
+          width: 54px;
+          height: 54px;
+          background: #c6ff00;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          border-radius: 50% 50% 0 50%; /* Tear drop points bottom-right */
+          transition: all 0.3s ease;
+        }
+        .hero-call-text {
+          padding: 0 1.75rem;
+          height: 54px;
+          display: inline-flex;
+          align-items: center;
+          background: #c6ff00; /* Match lime green explicitly */
+          font-weight: 700;
+          font-size: 1rem;
+          color: #0a0a0a;
+          letter-spacing: -0.01em;
+          white-space: nowrap;
+          border-radius: 99px;
+          transition: all 0.3s ease;
+        }
+        .hero-call-arrow {
+          transform: rotate(90deg); /* From ↗ to ↘ */
+          transition: all 0.3s ease;
+        }
+        
+        /* Hover states */
+        .hero-call-btn:hover {
+          box-shadow: 0 8px 40px rgba(255,255,255,0.25);
+          transform: translateY(-2px);
+        }
+        .hero-call-btn:hover .hero-call-icon {
+          border-radius: 0 50% 50% 50%; /* Tear drop points top-left */
+          background: #fff;
+        }
+        .hero-call-btn:hover .hero-call-text {
+          background: #fff;
+        }
+        .hero-call-btn:hover .hero-call-arrow {
+          transform: rotate(-45deg); /* From ↗ to ↑ */
+        }
+
         @keyframes floatBob {
           from { transform: translateY(0) rotate(0deg) scale(1); }
           to   { transform: translateY(-12px) rotate(15deg) scale(1.15); }

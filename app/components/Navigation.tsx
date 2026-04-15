@@ -91,43 +91,13 @@ export default function Navigation() {
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
           <a
             href="#contact"
-            className="nav-desktop"
+            className="nav-desktop contact-btn"
             id="nav-contact-cta"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.6rem",
-              padding: "0.55rem 1.1rem 0.55rem 1.4rem",
-              borderRadius: "999px",
-              background: "#fff",
-              color: "#0a0a0a",
-              fontWeight: 600,
-              fontSize: "0.9375rem",
-              textDecoration: "none",
-              transition: "background 0.2s, transform 0.15s",
-              whiteSpace: "nowrap",
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLAnchorElement).style.background = "#e8e8e8";
-              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(-1px)";
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLAnchorElement).style.background = "#fff";
-              (e.currentTarget as HTMLAnchorElement).style.transform = "translateY(0)";
-            }}
           >
             Contact Us
-            <span style={{
-              width: "28px", height: "28px",
-              borderRadius: "50%",
-              background: "#0a0a0a",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-            }}>
+            <span className="contact-icon-bg">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M2 10L10 2M10 2H4M10 2V8" stroke="#fff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
           </a>
@@ -195,6 +165,41 @@ export default function Navigation() {
       )}
 
       <style>{`
+        .contact-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.6rem;
+          padding: 0.55rem 1.1rem 0.55rem 1.4rem;
+          border-radius: 999px;
+          background: #fff;
+          color: #0a0a0a;
+          font-weight: 600;
+          font-size: 0.9375rem;
+          text-decoration: none;
+          transition: background 0.2s, transform 0.15s, color 0.2s;
+          white-space: nowrap;
+        }
+        .contact-icon-bg {
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: #0a0a0a;
+          color: #fff;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          transition: background 0.2s, color 0.2s;
+        }
+        .contact-btn:hover {
+          background: #c6ff00;
+          transform: translateY(-1px);
+        }
+        .contact-btn:hover .contact-icon-bg {
+          background: #0a0a0a; /* Keep black */
+          color: #c6ff00; /* If we want the arrow to change color to green */
+        }
+        
         @media (max-width: 860px) {
           .nav-desktop { display: none !important; }
           .nav-hamburger { display: flex !important; }

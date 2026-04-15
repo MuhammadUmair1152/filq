@@ -59,8 +59,8 @@ function AnimatedItem({ label, index }: { label: string; index: number }) {
     >
       <CodeBraces color={hovered ? "rgba(198,255,0,0.7)" : "rgba(255,255,255,0.3)"} />
       <span style={{
-        fontSize: "clamp(1rem, 2vw, 1.3rem)",
-        fontWeight: 600,
+        fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)", /* Smaller font for list item */
+        fontWeight: 500, /* Adjusted from 600 to pair with smaller physical size */
         color: hovered ? "#ffffff" : "rgba(255,255,255,0.75)",
         letterSpacing: "-0.015em",
         transition: "color 0.2s",
@@ -91,12 +91,13 @@ export default function Whyfilq() {
       position: "relative",
       background: "#08080a",
       overflow: "hidden",
-      paddingBlock: "clamp(5rem, 10vw, 9rem)",
+      paddingTop: "clamp(5rem, 10vw, 9rem)",
+      paddingBottom: "1rem", /* Removed huge bottom padding to glue to stats */
     }}>
       {/* Blue radial glow */}
       <div aria-hidden style={{
         position: "absolute", inset: 0, pointerEvents: "none",
-        background: "radial-gradient(ellipse 80% 80% at 50% 50%, rgba(40,20,160,0.55) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse 90% 90% at 50% 50%, rgba(10, 70, 240, 0.45) 0%, rgba(0, 30, 150, 0.15) 45%, transparent 75%)",
       }} />
 
       <div style={{
@@ -106,8 +107,8 @@ export default function Whyfilq() {
         position: "relative",
         zIndex: 1,
         display: "grid",
-        gridTemplateColumns: "auto 1fr",
-        gap: "clamp(2rem, 6vw, 8rem)",
+        gridTemplateColumns: "minmax(150px, 1fr) 2.2fr", /* Enforces the rigid right-shifted alignment seen in the image */
+        gap: "clamp(2rem, 4vw, 5rem)",
         alignItems: "start",
       }} className="why-grid">
 
@@ -118,7 +119,7 @@ export default function Whyfilq() {
             opacity: titleVisible ? 1 : 0,
             transform: titleVisible ? "translateX(0)" : "translateX(-20px)",
             transition: "opacity 0.6s ease, transform 0.6s ease",
-            paddingTop: "0.25rem",
+            marginTop: "-1.5rem", /* Physically pull it up visually */
           }}
         >
           <span style={{
@@ -137,12 +138,12 @@ export default function Whyfilq() {
         <div>
           <h2
             style={{
-              fontSize: "clamp(2.2rem, 5vw, 4rem)",
-              fontWeight: 700,
-              letterSpacing: "-0.025em",
-              lineHeight: 1.1,
+              fontSize: "clamp(2.4rem, 3vw, 3rem)", /* Finetuned heading size from Image 8 */
+              fontWeight: 600,
+              letterSpacing: "-0.015em",
+              lineHeight: 1.15,
               color: "#fff",
-              marginBottom: "1rem",
+              marginBottom: "3rem", /* Added more margin to push the list items down slightly, matching image */
               opacity: titleVisible ? 1 : 0,
               transform: titleVisible ? "translateY(0)" : "translateY(20px)",
               transition: "opacity 0.6s ease 0.05s, transform 0.6s ease 0.05s",
@@ -151,18 +152,18 @@ export default function Whyfilq() {
             <em style={{
               fontFamily: "var(--font-baskerville), 'Libre Baskerville', Georgia, serif",
               fontStyle: "italic",
-              fontWeight: 400,
-              color: "#a78bfa",
+              fontWeight: 200,
+              color: "#fff", /* White instead of purple as per screenshot */
             }}>
-              filq
+              Arounda
             </em>
-            {" "}is your perfect choice{" "}
+            {" "}is your perfect
             <br />
-            in terms of
+            choice in terms of
           </h2>
 
           {/* Items */}
-          <div style={{ marginTop: "1rem" }}>
+          <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
             {items.map((item, i) => (
               <AnimatedItem key={item.label} label={item.label} index={i} />
             ))}
