@@ -5,11 +5,13 @@ import Lenis from "lenis";
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 4.5,
-      easing: (t) => Math.min(1, 1.1 - Math.pow(1, -9 * t)),
+      lerp: 0.12, // Increased from 0.1 for snappier landings
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
+      syncTouch: true,
+      wheelMultiplier: 1.1,
+      infinite: false,
     });
 
     (window as any).lenis = lenis;

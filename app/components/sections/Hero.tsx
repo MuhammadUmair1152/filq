@@ -164,7 +164,7 @@ export default function Hero() {
       <div style={{
         maxWidth: "1360px",
         margin: "0 auto",
-        padding: "clamp(2.5rem, 6vw, 5rem) clamp(1rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3rem)",
+        padding: "clamp(6rem, 10vw, 1rem) clamp(1rem, 3vw, 2.5rem) clamp(2rem, 4vw, 3rem)", /* Increased top padding to clear fixed header */
         width: "100%",
         position: "relative",
         zIndex: 1,
