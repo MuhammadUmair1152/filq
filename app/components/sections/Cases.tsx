@@ -227,6 +227,18 @@ export default function Cases() {
 
           </div>
         ))}
+
+        {/* Explore all cases CTA */}
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "5rem" }}>
+          <a href="#portfolio" className="cases-explore-btn" aria-label="Explore all cases">
+            <span className="cases-explore-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="cases-explore-arrow">
+                <path d="M4 16L16 4M16 4H6M16 4V14" stroke="#0a0a0a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+            <span className="cases-explore-text">Explore all cases</span>
+          </a>
+        </div>
       </div>
 
       <style>{`
@@ -255,6 +267,59 @@ export default function Cases() {
         }
         .nav-btn:active:not(:disabled) {
           transform: scale(0.95);
+        }
+
+        .cases-explore-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0;
+          text-decoration: none;
+          box-shadow: 0 4px 30px rgba(196,255,0,0.25);
+          transition: all 0.3s ease;
+          border-radius: 99px;
+        }
+        .cases-explore-icon {
+          width: 54px;
+          height: 54px;
+          background: #c6ff00;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          border-radius: 50% 50% 0 50%;
+          transition: all 0.3s ease;
+        }
+        .cases-explore-text {
+          padding: 0 1.75rem;
+          height: 54px;
+          display: inline-flex;
+          align-items: center;
+          background: #c6ff00;
+          font-weight: 700;
+          font-size: 1rem;
+          color: #0a0a0a;
+          letter-spacing: -0.01em;
+          white-space: nowrap;
+          border-radius: 99px;
+          transition: all 0.3s ease;
+        }
+        .cases-explore-arrow {
+          transform: rotate(90deg);
+          transition: all 0.3s ease;
+        }
+        .cases-explore-btn:hover {
+          box-shadow: 0 8px 40px rgba(255,255,255,0.25);
+          transform: translateY(-2px);
+        }
+        .cases-explore-btn:hover .cases-explore-icon {
+          border-radius: 0 50% 50% 50%;
+          background: #fff;
+        }
+        .cases-explore-btn:hover .cases-explore-text {
+          background: #fff;
+        }
+        .cases-explore-btn:hover .cases-explore-arrow {
+          transform: rotate(-45deg);
         }
 
         @media (max-width: 900px) {

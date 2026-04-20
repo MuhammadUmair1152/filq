@@ -19,6 +19,37 @@ export default function Marquee() {
       padding: "2rem 0",
       position: "relative",
     }}>
+      {/* Continuation glow for zoomed-out Arounda look */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: "-55% -12% -45% -22%",
+          pointerEvents: "none",
+          background:
+            "radial-gradient(62% 46% at 16% 28%, rgba(109, 103, 255, 0.75) 0%, rgba(68, 108, 255, 0.34) 42%, transparent 80%)",
+          filter: "blur(34px)",
+          opacity: 0.9,
+          mixBlendMode: "screen",
+          zIndex: 0,
+        }}
+      />
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: "-26% -18% -55% -14%",
+          pointerEvents: "none",
+          background:
+            "linear-gradient(108deg, transparent 24%, rgba(109, 118, 255, 0.2) 40%, rgba(67, 103, 255, 0.48) 52%, rgba(44, 88, 255, 0.2) 63%, transparent 82%)",
+          filter: "blur(30px)",
+          transform: "rotate(-4deg) scale(1.1)",
+          opacity: 0.75,
+          mixBlendMode: "screen",
+          zIndex: 0,
+        }}
+      />
+
       {/* Left fade */}
       <div aria-hidden style={{
         position: "absolute", left: 0, top: 0, bottom: 0, width: "120px", zIndex: 2,
@@ -37,6 +68,8 @@ export default function Marquee() {
         gap: "3.5rem",
         width: "max-content",
         animation: "marqueeScroll 30s linear infinite",
+        position: "relative",
+        zIndex: 1,
       }}>
         {items.map((client, i) => (
           <span

@@ -36,7 +36,7 @@ export default function Industries() {
     <section
       id="industries"
       className="section-spacing"
-      style={{ borderTop: "1px solid var(--border-subtle)" }}
+      style={{}}
     >
       <div className="container-site">
         {/* Header */}

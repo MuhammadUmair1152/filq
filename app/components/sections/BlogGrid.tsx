@@ -44,7 +44,7 @@ export default function BlogGrid() {
     <section
       id="blog"
       className="section-spacing"
-      style={{ borderTop: "1px solid var(--border-subtle)" }}
+      style={{}}
     >
       <div className="container-site">
         {/* Header */}

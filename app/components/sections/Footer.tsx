@@ -40,7 +40,6 @@ export default function Footer() {
     <footer
       id="contact"
       style={{
-        borderTop: "1px solid var(--border-subtle)",
         paddingTop: "5rem",
         paddingBottom: "2.5rem",
         background: "var(--bg-primary)",

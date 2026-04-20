@@ -52,7 +52,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       className="section-spacing"
-      style={{ borderTop: "1px solid var(--border-subtle)" }}
+      style={{}}
     >
       <div className="container-site">
         {/* Header */}

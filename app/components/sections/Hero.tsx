@@ -1,32 +1,38 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
-const wordIcons: Record<string, { icon: React.ReactNode; color: string; bgStyle?: React.CSSProperties }[]> = {
+const wordIcons: Record<string, { icon: React.ReactNode; color: string }[]> = {
   brand: [
-    { icon: "✦", color: "#a855f7" },
-    { icon: "✧", color: "#c084fc" },
-    { icon: "◆",  color: "#9333ea" },
+    { icon: "✦", color: "#7c3cff" },
+    { icon: "✶", color: "#9d67ff" },
+    { icon: "✧", color: "#6b21ff" },
   ],
   website: [
-    { icon: "▣", color: "#22c55e" },
-    { icon: "⊞", color: "#4ade80" },
-    { icon: "▤", color: "#16a34a" },
+    {
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg>,
+      color: "#2fff36",
+    },
+    {
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>,
+      color: "#53ff5f",
+    },
+    {
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 15v-3M12 15V9M15 15v-5"/></svg>,
+      color: "#37f54b",
+    },
   ],
   "ux/ui design": [
-    { /* Smartphone */
-      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M12 18h.01"/></svg>,
-      color: "#00e5ff",
-      bgStyle: { borderRadius: "50% 50% 50% 0", padding: "12px", background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)", border: "1px solid rgba(0,229,255,0.25)", boxShadow: "0 8px 32px rgba(0,229,255,0.15)" }
+    {
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M12 18h.01"/></svg>,
+      color: "#20ecff",
     },
-    { /* Stack/Layers */
-      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg>,
-      color: "#00e5ff",
-      bgStyle: { borderRadius: "0 50% 50% 50%", padding: "12px", background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)", border: "1px solid rgba(0,229,255,0.25)", boxShadow: "0 8px 32px rgba(0,229,255,0.15)" }
+    {
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>,
+      color: "#1dd8ff",
     },
-    { /* Grid */
-      icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>,
-      color: "#00e5ff",
-      bgStyle: { borderRadius: "50% 50% 50% 0", padding: "12px", background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)", border: "1px solid rgba(0,229,255,0.25)", boxShadow: "0 8px 32px rgba(0,229,255,0.15)" }
+    {
+      icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></svg>,
+      color: "#2ee7ff",
     },
   ],
 };
@@ -77,7 +83,9 @@ function AccentWord({ word, isHovered, onEnter, onLeave }: {
             position: "absolute",
             top: floatPositions[i].top,
             left: floatPositions[i].left,
-            fontSize: "1.1rem",
+            width: "82px",
+            height: "82px",
+            borderRadius: "50%",
             color: ic.color,
             animation: `floatBob 1.4s ease-in-out infinite alternate`,
             animationDelay: floatPositions[i].delay,
@@ -86,7 +94,13 @@ function AccentWord({ word, isHovered, onEnter, onLeave }: {
             display: "inline-flex",
             alignItems: "center",
             justifyContent: "center",
-            ...(ic.bgStyle ? ic.bgStyle : { filter: "drop-shadow(0 0 6px currentColor)" }),
+            background: "rgba(8,12,24,0.82)",
+            border: "1px solid rgba(255,255,255,0.2)",
+            backdropFilter: "blur(12px)",
+            WebkitBackdropFilter: "blur(12px)",
+            boxShadow: `0 0 26px ${ic.color}88, inset 0 0 24px rgba(0,0,0,0.55)`,
+            fontSize: "1.75rem",
+            filter: "drop-shadow(0 0 10px currentColor)",
           }}
         >
           {ic.icon}
@@ -103,11 +117,10 @@ function AccentWord({ word, isHovered, onEnter, onLeave }: {
           fontSize: "clamp(2rem, 4.5vw, 4.5rem)",
           lineHeight: 1.05,
           color: isHovered
-            ? word === "brand" ? "#c084fc"
-            : word === "website" ? "#4ade80"
-            : "#60a5fa"
+            ? word === "brand" ? "#8d46ff"
+            : word === "website" ? "#2fff36"
+            : "#21e8ff"
             : "#fff",
-          transition: "color 0.25s ease",
           background: "rgba(30,30,40,0.72)",
           border: isHovered
             ? `1px solid ${word === "brand" ? "rgba(192,132,252,0.4)" : word === "website" ? "rgba(74,222,128,0.4)" : "rgba(96,165,250,0.4)"}`
@@ -117,10 +130,11 @@ function AccentWord({ word, isHovered, onEnter, onLeave }: {
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
           cursor: "default",
+          transform: isHovered ? "rotate(-5deg) translateY(-1px)" : "rotate(0deg) translateY(0)",
           boxShadow: isHovered
-            ? `0 0 30px ${word === "brand" ? "rgba(168,85,247,0.25)" : word === "website" ? "rgba(34,197,94,0.2)" : "rgba(59,130,246,0.2)"}`
+            ? `0 0 30px ${word === "brand" ? "rgba(124,60,255,0.35)" : word === "website" ? "rgba(47,255,54,0.24)" : "rgba(33,232,255,0.24)"}`
             : "none",
-          transition2: "color 0.25s, border-color 0.25s, box-shadow 0.25s",
+          transition: "color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease",
         } as React.CSSProperties}
       >
         {word}
@@ -146,19 +160,68 @@ export default function Hero() {
         background: "#08080a",
       }}
     >
-      {/* ── Radial gradient backgrounds ── */}
-      <div aria-hidden style={{
-        position: "absolute", inset: 0, pointerEvents: "none",
-        background: "radial-gradient(ellipse 90% 70% at 20% 50%, rgba(20, 80, 255, 0.50) 0%, transparent 60%)",
-      }}/>
-      <div aria-hidden style={{
-        position: "absolute", inset: 0, pointerEvents: "none",
-        background: "radial-gradient(ellipse 60% 60% at 70% 30%, rgba(10, 60, 220, 0.35) 0%, transparent 70%)",
-      }}/>
-      <div aria-hidden style={{
-        position: "absolute", inset: 0, pointerEvents: "none",
-        background: "radial-gradient(ellipse 50% 40% at 50% 80%, rgba(0, 50, 200, 0.25) 0%, transparent 70%)",
-      }}/>
+      {/* ── Arounda-style sweeping blue glow background ── */}
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: 0,
+          pointerEvents: "none",
+          background:
+            "linear-gradient(to bottom, rgba(3, 6, 20, 0.95) 0%, rgba(3, 6, 20, 0.84) 40%, rgba(3, 6, 20, 0.7) 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: "-8% 46% 6% -20%",
+          pointerEvents: "none",
+          background:
+            "radial-gradient(106% 78% at 10% 50%, rgba(126, 112, 255, 0.96) 0%, rgba(77, 114, 255, 0.7) 35%, rgba(32, 92, 255, 0.22) 60%, transparent 84%)",
+          filter: "blur(26px)",
+          opacity: 0.98,
+          maskImage:
+            "radial-gradient(120% 108% at 18% 56%, black 0%, rgba(0,0,0,0.92) 42%, rgba(0,0,0,0.34) 72%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(120% 108% at 18% 56%, black 0%, rgba(0,0,0,0.92) 42%, rgba(0,0,0,0.34) 72%, transparent 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: "58% -6% -30% -8%",
+          pointerEvents: "none",
+          background:
+            "linear-gradient(111deg, transparent 18%, rgba(126, 123, 255, 0.26) 36%, rgba(74, 112, 255, 0.52) 50%, rgba(43, 90, 255, 0.22) 62%, transparent 82%)",
+          transform: "rotate(-7deg) scale(1.06)",
+          filter: "blur(28px)",
+          opacity: 0.74,
+          mixBlendMode: "screen",
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.22) 24%, rgba(0,0,0,0.78) 44%, black 62%, rgba(0,0,0,0.95) 86%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.22) 24%, rgba(0,0,0,0.78) 44%, black 62%, rgba(0,0,0,0.95) 86%, transparent 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        style={{
+          position: "absolute",
+          inset: "62% 20% -34% 54%",
+          pointerEvents: "none",
+          background:
+            "radial-gradient(62% 44% at 82% 84%, rgba(36, 98, 255, 0.22) 0%, rgba(36, 98, 255, 0.08) 42%, transparent 78%)",
+          filter: "blur(30px)",
+          opacity: 0.26,
+          mixBlendMode: "screen",
+          maskImage:
+            "radial-gradient(120% 110% at 70% 72%, black 0%, rgba(0,0,0,0.72) 52%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(120% 110% at 70% 72%, black 0%, rgba(0,0,0,0.72) 52%, transparent 100%)",
+        }}
+      />
 
       {/* ── Content ── */}
       <div style={{
@@ -343,8 +406,8 @@ export default function Hero() {
 
       {/* Bottom fade */}
       <div aria-hidden style={{
-        position: "absolute", bottom: 0, left: 0, right: 0, height: "120px",
-        background: "linear-gradient(to bottom, transparent, #08080a)",
+        position: "absolute", bottom: 0, left: 0, right: 0, height: "84px",
+        background: "linear-gradient(to bottom, transparent, rgba(8,8,10,0.68))",
         pointerEvents: "none",
       }}/>
 
@@ -352,7 +415,7 @@ export default function Hero() {
         .hero-call-btn {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
+          gap: 0;
           text-decoration: none;
           box-shadow: 0 4px 30px rgba(196,255,0,0.25);
           transition: all 0.3s ease;

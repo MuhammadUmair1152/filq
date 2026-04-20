@@ -1,8 +1,7 @@
 import Navigation from "./components/Navigation";
 import Hero from "./components/sections/Hero";
 import Marquee from "./components/sections/Marquee";
-import Whyfilq from "./components/sections/Whyfilq";
-import Stats from "./components/sections/Stats";
+import AboutUs from "./components/sections/AboutUs";
 import ServicesGrid from "./components/sections/ServicesGrid";
 import Cases from "./components/sections/Cases";
 import BannerCTA from "./components/sections/BannerCTA";
@@ -19,8 +18,7 @@ export default function Home() {
       <main>
         <Hero />
         <Marquee />
-        <Whyfilq />
-        <Stats />
+        <AboutUs />
         <ServicesGrid />
         <Cases />
         <BannerCTA />
