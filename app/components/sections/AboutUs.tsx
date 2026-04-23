@@ -49,9 +49,9 @@ export default function AboutUs() {
       id="about-us-section"
       style={{
         position: "relative",
-        background: "#08080a",
-        paddingTop: "clamp(6rem, 12vw, 10rem)",
-        paddingBottom: "clamp(6rem, 12vw, 12rem)",
+        background: "transparent",
+        paddingTop: "clamp(3rem, 4vw, 4rem)",
+        paddingBottom: "clamp(2rem, 3vw, 3rem)",
         overflow: "hidden",
       }}
     >
@@ -246,8 +246,8 @@ export default function AboutUs() {
 
         {/* Improved Footer Row */}
         <div style={{
-          marginTop: "clamp(8rem, 16vw, 15rem)",
-          paddingTop: "4rem",
+          marginTop: "clamp(1.5rem, 3vw, 2.5rem)",
+          paddingTop: "1.5rem",
           borderTop: "1px solid rgba(255,255,255,0.06)",
           display: "flex",
           justifyContent: "space-between",
@@ -306,7 +306,7 @@ export default function AboutUs() {
           </div>
 
         </div>
-
+        
       </div>
 
       <style>{`

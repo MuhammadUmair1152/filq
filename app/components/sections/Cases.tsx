@@ -56,7 +56,7 @@ const casesData = [
 
 export default function Cases() {
   return (
-    <section id="cases" style={{ background: "#0a0a0a", paddingTop: "6rem", paddingBottom: "8rem" }}>
+    <section id="cases" style={{ background: "transparent", paddingTop: "6rem", paddingBottom: "0rem" }}>
       <div style={{ maxWidth: "1360px", margin: "0 auto", padding: "0 clamp(1rem, 3vw, 3.5rem)", position: "relative" }}>
 
         {/* Global Label - Added some breathing room back */}
@@ -229,7 +229,7 @@ export default function Cases() {
         ))}
 
         {/* Explore all cases CTA */}
-        <div style={{ display: "flex", justifyContent: "center", marginTop: "5rem" }}>
+        <div style={{ display: "flex", justifyContent: "center", marginTop: "2rem" }}>
           <a href="#portfolio" className="cases-explore-btn" aria-label="Explore all cases">
             <span className="cases-explore-icon">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="cases-explore-arrow">

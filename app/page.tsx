@@ -10,6 +10,8 @@ import Industries from "./components/sections/Industries";
 import Testimonials from "./components/sections/Testimonials";
 import BlogGrid from "./components/sections/BlogGrid";
 import Footer from "./components/sections/Footer";
+import Stats from "./components/sections/Stats";
+import Whyfilq from "./components/sections/Whyfilq";
 
 export default function Home() {
   return (
@@ -17,11 +19,12 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
-        <Marquee />
-        <AboutUs />
+        {/* <Marquee /> */}
+        <Whyfilq/>
         <ServicesGrid />
         <Cases />
-        <BannerCTA />
+        {/* <BannerCTA /> */}
+        <AboutUs />
         <Portfolio />
         <Industries />
         <Testimonials />

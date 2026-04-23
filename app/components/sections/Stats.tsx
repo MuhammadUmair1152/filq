@@ -133,7 +133,7 @@ export default function Stats() {
   return (
     <section style={{
       position: "relative",
-      background: "#08080a",
+      background: "transparent",
       overflow: "hidden",
       paddingBottom: "clamp(5rem, 10vw, 9rem)",
       paddingTop: "1rem", /* drastically reduced from 4rem so it blends with Results */

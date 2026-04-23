@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
+import Stats from "./Stats";
 
 const items = [
   { label: "Hiring system with immediate start" },
@@ -89,7 +90,7 @@ export default function Whyfilq() {
   return (
     <section style={{
       position: "relative",
-      background: "#08080a",
+      background: "transparent",
       overflow: "hidden",
       paddingTop: "clamp(5rem, 10vw, 9rem)",
       paddingBottom: "1rem", /* Removed huge bottom padding to glue to stats */
@@ -176,6 +177,7 @@ export default function Whyfilq() {
           .why-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
         }
       `}</style>
+      <Stats/>
     </section>
   );
 }

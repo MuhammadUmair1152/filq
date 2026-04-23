@@ -72,7 +72,7 @@ export default function ServicesGrid() {
       ref={ref}
       id="services"
       style={{
-        background: "#08080a",
+        background: "transparent",
         paddingBlock: "clamp(1rem, 3vw, 2rem)",
         paddingBottom: "1.5rem", 
         position: "relative",
