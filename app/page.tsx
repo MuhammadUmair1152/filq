@@ -22,6 +22,7 @@ export default function Home() {
         {/* <Marquee /> */}
         <Whyfilq/>
         <ServicesGrid />
+        
         <Cases />
         {/* <BannerCTA /> */}
         <AboutUs />
