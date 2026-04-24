@@ -27,10 +27,11 @@ export default function Navigation() {
         position: "fixed",
         top: 0, left: 0, right: 0,
         zIndex: 100,
-        transition: "background 0.4s ease, backdrop-filter 0.4s ease",
-        background: scrolled ? "rgba(8,8,10,0.75)" : "transparent",
-        backdropFilter: scrolled ? "blur(20px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(20px)" : "none",
+        transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+        background: scrolled ? "rgba(8, 8, 10, 0.5)" : "transparent",
+        backdropFilter: scrolled ? "blur(16px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid transparent",
       }}
     >
       <div style={{
@@ -40,20 +41,53 @@ export default function Navigation() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        height: "72px",
+        height: scrolled ? "64px" : "76px",
         gap: "1rem",
+        transition: "height 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
       }}>
         {/* Logo */}
-        <Link href="/" style={{ textDecoration: "none", flexShrink: 0 }}>
-          <span style={{
-            fontSize: "1.35rem",
-            fontWeight: 700,
-            color: "#fff",
-            letterSpacing: "-0.03em",
-            fontFamily: "var(--font-outfit), sans-serif",
-          }}>
-            filq
-          </span>
+        <Link href="/" style={{
+          textDecoration: "none",
+          flexShrink: 0,
+          display: "flex",
+          alignItems: "center",
+          gap: "4px"
+        }}>
+          <img
+            src="/navoq3d.png"
+            alt="Navoq Logo"
+            style={{
+              height: scrolled ? "50px" : "58px",
+              width: "auto",
+              objectFit: "contain",
+              transition: "height 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+            }}
+          />
+          <div style={{ display: "flex", flexDirection: "column", gap: "0", lineHeight: 0.9 }}>
+            <span style={{
+              fontSize: scrolled ? "1.25rem" : "1.45rem",
+              fontWeight: 800,
+              color: "#fff",
+              letterSpacing: "-0.01em",
+              fontFamily: "var(--font-outfit), sans-serif",
+              textTransform: "uppercase",
+              transition: "font-size 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+            }}>
+              navoq
+            </span>
+            <span style={{
+              alignSelf: "flex-end",
+              fontSize: scrolled ? "0.6rem" : "0.7rem",
+              fontWeight: 400,
+              fontStyle: "italic",
+              color: "rgba(255,255,255,0.6)",
+              fontFamily: "var(--font-outfit), sans-serif",
+              textTransform: "lowercase",
+              transition: "font-size 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}>
+              media
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
