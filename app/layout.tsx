@@ -19,9 +19,9 @@ const libreBaskerville = Libre_Baskerville({
 });
 
 export const metadata: Metadata = {
-  title: "filq — Digital Product Design And Development Company",
+  title: "navoq — Digital Product Design And Development Company",
   description:
-    "filq is a digital product design and development agency specializing in UX/UI design, branding, web development, and mobile app design for SaaS, AI, Web3, and Fintech companies.",
+    "navoq is a digital product design and development agency specializing in UX/UI design, branding, web development, and mobile app design for SaaS, AI, Web3, and Fintech companies.",
   keywords: [
     "UI/UX design agency",
     "product design company",
@@ -34,15 +34,15 @@ export const metadata: Metadata = {
     "Fintech design",
   ],
   openGraph: {
-    title: "filq — Digital Product Design And Development Company",
+    title: "navoq — Digital Product Design And Development Company",
     description:
       "Your design & dev partner that unites brand, website, UX/UI design into a holistic product.",
     type: "website",
-    url: "https://filq.agency",
+    url: "https://navoq.agency",
   },
   twitter: {
     card: "summary_large_image",
-    title: "filq — Digital Product Design And Development Company",
+    title: "navoq — Digital Product Design And Development Company",
     description:
       "Your design & dev partner that unites brand, website, UX/UI design into a holistic product.",
   },
