@@ -156,7 +156,7 @@ export default function Whyfilq() {
               fontWeight: 200,
               color: "#fff", /* White instead of purple as per screenshot */
             }}>
-              Arounda
+              navoq
             </em>
             {" "}is your perfect
             <br />
@@ -177,7 +177,7 @@ export default function Whyfilq() {
           .why-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
         }
       `}</style>
-      <Stats/>
+      <Stats />
     </section>
   );
 }

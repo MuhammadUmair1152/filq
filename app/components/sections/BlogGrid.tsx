@@ -1,226 +1,158 @@
 "use client";
+import { useState } from "react";
+
+import ButtonPrimary from "../ui/ButtonPrimary";
 
 const posts = [
   {
     id: "post-1",
-    tag: "Design",
-    readTime: "5 min read",
-    title: "How to design AI interfaces that users actually trust",
-    excerpt:
-      "As AI products proliferate, the biggest differentiator isn't the model — it's the interface. Here's how to design for trust.",
-    color: "#3B78FF",
-    emoji: "🧠",
-    author: "Design Team",
-    date: "Apr 2025",
+    tags: ["Branding", "Fintech"],
+    title: "Global Branding in Enterprise SaaS and Fintech with Unified Identity",
+    image: "https://cdn.prod.website-files.com/658162679bc86c0ec2f2732b/69cfa0aa088f3ce4d7010cb6_Blog%20Cover%20_%20What%20a%20Good%20Website%20Conversion%20Rate%20Means%20When%20Your%20Buyer%20Is%20a%20Committee.avif",
+    authorName: "Vlad Gavriluk",
+    authorImage: "https://cdn.prod.website-files.com/65647bbe0d57c8abad78e939/6895a2239015bdd04d190600_vlad-purple.png",
+    date: "24.04.2026",
   },
   {
     id: "post-2",
-    tag: "Strategy",
-    readTime: "7 min read",
-    title: "The ROI of design: why investing in UX is your best business decision",
-    excerpt:
-      "We analyzed 50+ client projects and found a consistent pattern: great design isn't a cost, it's compounding returns.",
-    color: "#D9FF00",
-    emoji: "📈",
-    author: "Vladislav G.",
-    date: "Mar 2025",
+    tags: ["Branding"],
+    title: "Stages of Branding for Organizations With More Than One Decision Maker",
+    image: "https://cdn.prod.website-files.com/658162679bc86c0ec2f2732b/69e6205c851896455f5fcbc7_Blog%20Cover%20_%20Stages%20of%20Branding%20for%20Organizations%20With%20More%20Than%20One%20Decision%20Maker.avif",
+    authorName: "Vlad Gavriluk",
+    authorImage: "https://cdn.prod.website-files.com/65647bbe0d57c8abad78e939/6895a2239015bdd04d190600_vlad-purple.png",
+    date: "20.04.2026",
   },
   {
     id: "post-3",
-    tag: "Web3",
-    readTime: "6 min read",
-    title: "Designing for Web3: solving onboarding without sacrificing decentralization",
-    excerpt:
-      "The biggest friction in Web3 isn't the technology — it's the experience. Here's how leading products are solving it.",
-    color: "#783BFF",
-    emoji: "⛓️",
-    author: "Product Team",
-    date: "Feb 2025",
-  },
+    tags: ["Branding", "Design Audit"],
+    title: "Brand SWOT Analysis for Companies That Cannot Afford Blind Spots",
+    image: "https://cdn.prod.website-files.com/658162679bc86c0ec2f2732b/69d8d13ee4f4fb15cb6c27be_Blog%20Cover%20_%20Brand%20SWOT%20Analysis%20for%20Companies%20That%20Cannot%20Afford%20Blind%20Spots.avif",
+    authorName: "Vlad Gavriluk",
+    authorImage: "https://cdn.prod.website-files.com/65647bbe0d57c8abad78e939/6895a2239015bdd04d190600_vlad-purple.png",
+    date: "10.04.2026",
+  }
 ];
 
-export default function BlogGrid() {
+// SVG Cutout Component
+function SvgCorner({ className }: { className: string }) {
   return (
-    <section
-      id="blog"
-      className="section-spacing"
-      style={{}}
-    >
-      <div className="container-site">
+    <div className={className} style={{ position: "absolute", width: "24px", height: "24px", pointerEvents: "none", zIndex: 5 }}>
+      <svg viewBox="0 0 230 230" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "100%" }}>
+        <path d="M230 0V230C208.672 80.6892 154.524 33.6222 0 0H230Z" fill="#0b0b0d" />
+      </svg>
+    </div>
+  );
+}
+
+export default function BlogGrid() {
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
+  return (
+    <section id="blog" style={{ position: "relative", paddingTop: "clamp(3rem, 6vw, 6rem)", paddingBottom: "clamp(4rem, 8vw, 8rem)" }}>
+      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 clamp(1rem, 3vw, 2rem)", position: "relative", zIndex: 1 }}>
+
         {/* Header */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
-            flexWrap: "wrap",
-            gap: "1.5rem",
-            marginBottom: "3rem",
-          }}
-        >
-          <div>
-            <span
-              className="pill"
-              style={{
-                textTransform: "uppercase",
-                letterSpacing: "0.08em",
-                fontSize: "0.72rem",
-                marginBottom: "1.25rem",
-                display: "inline-flex",
-              }}
-            >
-              Our Blog
-            </span>
-            <h2
-              style={{
-                fontSize: "clamp(2rem, 4vw, 3.25rem)",
-                fontWeight: 700,
-                letterSpacing: "-0.02em",
-                lineHeight: 1.18,
-                marginTop: "1rem",
-                maxWidth: "480px",
-              }}
-            >
-              Latest insights from the{" "}
-              <em className="font-serif-italic" style={{ fontWeight: 400 }}>
-                design frontier
-              </em>
+        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "3rem", gap: "2rem" }}>
+          <div style={{ display: "flex", gap: "10rem" }}>
+            <span style={{ fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.15em", color: "rgba(255,255,255,0.7)" }}>BLOG</span>
+            <h2 style={{ fontSize: "clamp(2rem, 3vw, 2.7rem)", fontWeight: 600, lineHeight: 1.15, letterSpacing: "-0.01em", maxWidth: "500px", color: "#fff", margin: 0 }}>
+              Get real <em className="font-serif-italic" style={{ color: "#fff", fontStyle: "italic", fontWeight: 600 }}>growth insights</em> and proven tactics for digital success
             </h2>
           </div>
-          <a href="#blog" className="btn-ghost" id="blog-see-all">
-            See All Articles
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </a>
+          {/* Read more articles button */}
+          <ButtonPrimary text="Read more articles" href="#blog" />
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "1.25rem",
-          }}
-        >
-          {posts.map((post) => (
-            <article
-              key={post.id}
-              className="card"
-              style={{
-                overflow: "hidden",
-                cursor: "pointer",
-                transition: "transform var(--transition-base), border-color var(--transition-base)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-5px)";
-                (e.currentTarget as HTMLElement).style.borderColor = `${post.color}33`;
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLElement).style.borderColor = "var(--border-card)";
-              }}
-            >
-              {/* Thumbnail */}
-              <div
-                style={{
-                  height: "180px",
-                  background: `linear-gradient(135deg, ${post.color}20 0%, rgba(255,255,255,0.02) 100%)`,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "4rem",
-                  borderBottom: "1px solid var(--border-card)",
-                  position: "relative",
-                  overflow: "hidden",
-                }}
+        {/* Cards Grid */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "1.25rem" }}>
+          {posts.map((post, i) => {
+            const isHovered = hoveredIdx === i;
+
+            return (
+              <article
+                key={post.id}
+                onMouseEnter={() => setHoveredIdx(i)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                style={{ position: "relative", cursor: "pointer", transition: "all 0.3s ease", display: "flex", flexDirection: "column", gap: "1.25rem" }}
               >
-                <span style={{ filter: "saturate(0) brightness(1.4)", opacity: 0.6 }}>
-                  {post.emoji}
-                </span>
-                <div
-                  aria-hidden
-                  style={{
+                {/* Image Container with Custom Cutout effect on Hover */}
+                <div style={{ position: "relative", borderRadius: "24px", overflow: "hidden", aspectRatio: "1.4", background: "#f5f5f5" }}>
+
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    style={{
+                      width: "100%", height: "100%", objectFit: "cover",
+                      transition: "transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1)",
+                      transform: isHovered ? "scale(1.05)" : "scale(1)"
+                    }}
+                  />
+
+                  {/* Hover Tags Overlay Container (top right corner replacement) */}
+                  <div style={{
                     position: "absolute",
-                    inset: 0,
-                    background: `radial-gradient(circle at 50% 50%, ${post.color}15 0%, transparent 70%)`,
-                  }}
-                />
-              </div>
+                    top: 0, right: 0, // Pull flush to the corner! Wait, it was -2. 0 is correct
+                    padding: "0 0 1.25rem 1.25rem", // shape grows inwards seamlessly
+                    background: "#0b0b0d", // matches site background to look like a cutout
+                    borderBottomLeftRadius: "26px",
+                    opacity: isHovered ? 1 : 0,
+                    transform: isHovered ? "translate(0, 0)" : "translate(20px, -20px)",
+                    visibility: isHovered ? "visible" : "hidden",
+                    transition: "all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1)",
+                    display: "flex", gap: "0.5rem", zIndex: 2
+                  }}>
+                    {/* SVGs that smooth out the corner (concave effect) */}
+                    <SvgCorner className="cutout-corner-left" />
+                    <SvgCorner className="cutout-corner-bottom" />
 
-              {/* Content */}
-              <div style={{ padding: "1.5rem", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                  <span
-                    className="tag-pill"
-                    style={{ borderColor: `${post.color}33`, color: post.color }}
-                  >
-                    {post.tag}
-                  </span>
-                  <span style={{ color: "var(--text-muted-alt)", fontSize: "0.78rem" }}>
-                    {post.readTime}
-                  </span>
-                </div>
-
-                <h3
-                  style={{
-                    fontSize: "1.05rem",
-                    fontWeight: 600,
-                    lineHeight: 1.4,
-                    color: "var(--text-primary)",
-                  }}
-                >
-                  {post.title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "0.85rem",
-                    color: "var(--text-muted)",
-                    lineHeight: 1.65,
-                  }}
-                >
-                  {post.excerpt}
-                </p>
-
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    paddingTop: "0.75rem",
-                    borderTop: "1px solid var(--border-card)",
-                    marginTop: "0.25rem",
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                    <div
-                      style={{
-                        width: "28px",
-                        height: "28px",
-                        borderRadius: "50%",
-                        background: `${post.color}25`,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        fontSize: "0.7rem",
-                        fontWeight: 700,
-                        color: post.color,
-                      }}
-                    >
-                      {post.author[0]}
-                    </div>
-                    <span style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
-                      {post.author}
-                    </span>
+                    {post.tags.map(tag => (
+                      <span key={tag} style={{
+                        padding: "0.5rem 1.25rem",
+                        borderRadius: "30px",
+                        background: "rgba(255,255,255,0.08)",
+                        color: "rgba(255,255,255,0.9)",
+                        fontSize: "0.85rem",
+                        fontWeight: 500,
+                      }}>
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                  <span style={{ fontSize: "0.78rem", color: "var(--text-muted-alt)" }}>
-                    {post.date}
-                  </span>
                 </div>
-              </div>
-            </article>
-          ))}
+
+                {/* Card Info */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.8rem", padding: "0 0.5rem" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                      <img src={post.authorImage} alt={post.authorName} style={{ width: "24px", height: "24px", borderRadius: "50%", objectFit: "cover" }} />
+                      <span style={{ fontSize: "0.9rem", fontWeight: 700, color: "#fff" }}>{post.authorName}</span>
+                    </div>
+                    <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "rgba(255,255,255,0.6)" }}>{post.date}</span>
+                  </div>
+                  <h3 style={{ fontSize: "1.2rem", fontWeight: 600, color: "#fff", lineHeight: 1.4, margin: 0, transition: "color 0.3s ease" }}>
+                    {post.title}
+                  </h3>
+                </div>
+
+              </article>
+            );
+          })}
         </div>
+
       </div>
+
+      <style>{`
+         .cutout-corner-left {
+            left: -23.5px; /* Exactly line up with the edge */
+            top: 0;
+            transform: scaleX(-1);
+         }
+         .cutout-corner-bottom {
+            right: 0;
+            bottom: -23.5px;
+            transform: scaleY(-1);
+         }
+      `}</style>
     </section>
   );
 }

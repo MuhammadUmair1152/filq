@@ -86,12 +86,12 @@ export default function AboutUs() {
           alignItems: "start",
         }} className="about-main-grid">
           
-          {/* Left Column: Heading & Text */}
+          {/* Heading */}
           <div style={{
             opacity: visible ? 1 : 0,
             transform: visible ? "translateY(0)" : "translateY(30px)",
             transition: "all 1s cubic-bezier(0.2, 0.8, 0.2, 1)",
-          }}>
+          }} className="about-heading-box">
             <span style={{
               fontSize: "0.7rem",
               fontWeight: 700,
@@ -110,43 +110,12 @@ export default function AboutUs() {
               lineHeight: 1,
               letterSpacing: "-0.045em",
               color: "#fff",
-              marginBottom: "6rem",
+              marginBottom: "clamp(2rem, 4vw, 6rem)",
               maxWidth: "850px",
               paddingRight: "2rem",
             }}>
               Digital design experts who fuel <span className="font-serif-italic" style={{ color: "#c6ff00", fontWeight: 700, fontStyle: "italic" }}>growth</span>
             </h2>
-
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "clamp(2rem, 5vw, 5rem)",
-            }} className="about-text-blocks">
-              <div style={{ maxWidth: "260px" }}>
-                <CodeBraces />
-                <p style={{
-                  fontSize: "0.9rem",
-                  lineHeight: 1.5,
-                  color: "rgba(255,255,255,0.6)",
-                  fontWeight: 500,
-                  margin: 0
-                }}>
-                  Your digital design and development agency for high-impact results
-                </p>
-              </div>
-              <div style={{ maxWidth: "260px" }}>
-                <CodeBraces color="rgba(255,255,255,0.3)"/>
-                <p style={{
-                  fontSize: "0.9rem",
-                  lineHeight: 1.5,
-                  color: "rgba(255,255,255,0.6)",
-                  fontWeight: 500,
-                  margin: 0
-                }}>
-                  A global team that understands your market, users, and how to make products win
-                </p>
-              </div>
-            </div>
           </div>
 
           {/* Right Column: Tight 55+ Cluster */}
@@ -155,11 +124,14 @@ export default function AboutUs() {
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
-            paddingTop: "6rem",
+            paddingTop: "clamp(0rem, 2vw, 6rem)",
             opacity: visible ? 1 : 0,
             transform: visible ? "scale(1)" : "scale(0.96)",
             transition: "all 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.2s",
-          }}>
+            gridRow: "1 / 3",
+            gridColumn: "2"
+          }} className="about-cluster-box">
+
             <div style={{ position: "relative", width: "100%", maxWidth: "320px", height: "320px" }}>
               
               {/* Backing Number 55+ (Gigantic & Extra Bold) */}
@@ -242,7 +214,49 @@ export default function AboutUs() {
               })}
             </div>
           </div>
+
+
+          {/* Text Blocks */}
+          <div style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(30px)",
+            transition: "all 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s",
+            marginTop: "clamp(0rem, 2vw, 0rem)",
+          }} className="about-text-box">
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "clamp(2rem, 5vw, 5rem)",
+            }} className="about-text-blocks">
+              <div style={{ maxWidth: "260px" }}>
+                <CodeBraces />
+                <p style={{
+                  fontSize: "0.95rem",
+                  lineHeight: 1.5,
+                  color: "rgba(255,255,255,0.6)",
+                  fontWeight: 500,
+                  margin: 0
+                }}>
+                  Your digital design and development agency for high-impact results
+                </p>
+              </div>
+              <div style={{ maxWidth: "260px" }}>
+                <CodeBraces color="rgba(255,255,255,0.3)"/>
+                <p style={{
+                  fontSize: "0.95rem",
+                  lineHeight: 1.5,
+                  color: "rgba(255,255,255,0.6)",
+                  fontWeight: 500,
+                  margin: 0
+                }}>
+                  A global team that understands your market, users, and how to make products win
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+
+
 
         {/* Improved Footer Row */}
         <div style={{
@@ -258,34 +272,45 @@ export default function AboutUs() {
           transition: "opacity 1.2s ease 0.6s",
         }} className="about-footer-refined">
           
-          {/* Client Logos - Lowercase matched where appropriate */}
+          {/* Client Logos with Symbols */}
           <div style={{
-            display: "flex",
+            display: "grid",
+            gridTemplateColumns: "repeat(4, auto)",
             alignItems: "center",
-            gap: "clamp(2.5rem, 5.5vw, 5rem)",
-            flexWrap: "wrap",
+            gap: "clamp(2rem, 4vw, 5rem)",
+            justifyContent: "flex-start",
           }} className="about-logos">
-            {["WordPress.com", "interprefy", "PLAYERS HEALTH", "Blockworks"].map((name) => (
-              <span key={name} style={{
-                fontSize: "clamp(1.1rem, 1.7vw, 1.35rem)",
-                fontWeight: 800,
-                color: "rgba(255,255,255,0.25)",
-                letterSpacing: "-0.04em",
+            {[
+              { name: "WordPress.com", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.158 12.786l-2.698 7.84c.806.236 1.657.365 2.54.365 1.047 0 2.05-.176 2.986-.503l-2.828-7.702zM2.316 12c0 1.84.501 3.567 1.37 5.052l5.749-15.733C5.474 2.802 2.316 6.905 2.316 12zm17.618 4.824c.732-1.22 1.258-2.5 1.258-3.904 0-1.471-.252-2.802-.734-4.015l-1.637 4.79-.893-2.613L15.42 18.06c1.782-.676 3.42-1.895 4.514-3.236zm-8.396-5.011l2.42-6.907c-.503-.13-.997-.197-1.5-.197-.478 0-.946.062-1.403.18L11.538 11.82z" /></svg> },
+              { name: "interprefy", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="10" width="3" height="4" /><rect x="7" y="6" width="3" height="12" /><rect x="12" y="3" width="3" height="18" /><rect x="17" y="8" width="3" height="8" /></svg> },
+              { name: "PLAYERS HEALTH", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" /></svg> },
+              { name: "Blockworks", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h18v-2H3v2zm0-6h18V5H3v2zm0 12h18v-2H3v2z" /></svg> }
+            ].map((client) => (
+              <div key={client.name} style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.75rem",
+                fontSize: "clamp(0.95rem, 1.5vw, 1.1rem)",
+                fontWeight: 700,
+                color: "rgba(255,255,255,0.3)",
+                letterSpacing: "-0.02em",
                 cursor: "default",
                 transition: "all 0.3s ease",
                 fontFamily: "var(--font-outfit), sans-serif",
-                textTransform: name==="PLAYERS HEALTH" ? "uppercase" : "none"
-              }} onMouseEnter={e => {
+                textTransform: client.name==="PLAYERS HEALTH" ? "uppercase" : "none"
+              }} className="about-logo-item" onMouseEnter={e => {
                 e.currentTarget.style.color = "#fff";
-                e.currentTarget.style.transform = "translateY(-3px)";
+                e.currentTarget.style.transform = "translateY(-2px)";
               }} onMouseLeave={e => {
-                e.currentTarget.style.color = "rgba(255,255,255,0.25)";
+                e.currentTarget.style.color = "rgba(255,255,255,0.3)";
                 e.currentTarget.style.transform = "translateY(0)";
               }}>
-                {name}
-              </span>
+                <span style={{ opacity: 0.8 }}>{client.icon}</span>
+                {client.name}
+              </div>
             ))}
           </div>
+
 
           {/* Stats with Clean Divider */}
           <div style={{
@@ -315,14 +340,19 @@ export default function AboutUs() {
           to   { transform: translate(-50%, -50%) translateY(-10px) rotate(1deg); }
         }
         @media (max-width: 1100px) {
-          .about-main-grid { grid-template-columns: 1fr !important; gap: 6rem !important; }
-          .about-footer-refined { justify-content: flex-start !important; }
-          .about-stat-row { border-left: none !important; padding-left: 0 !important; gap: 4rem !important; margin-top: 2rem; }
+          .about-main-grid { display: flex !important; flex-direction: column !important; gap: 4rem !important; }
+          .about-heading-box { order: 1; }
+          .about-cluster-box { order: 2; padding-top: 0 !important; width: 100% !important; justify-content: center !important; margin-bottom: 2rem; }
+          .about-text-box { order: 3; }
+          .about-footer-refined { justify-content: flex-start !important; flex-direction: column !important; align-items: flex-start !important; gap: 3rem !important; }
+          .about-stat-row { border-left: none !important; padding-left: 0 !important; gap: 4rem !important; margin-top: 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2.5rem; width: 100%; }
         }
         @media (max-width: 640px) {
-          .about-text-blocks { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
-          .about-stat-row { flex-direction: column !important; align-items: flex-start !important; gap: 2rem !important; }
+          .about-text-blocks { grid-template-columns: 1fr !important; gap: 2rem !important; }
+          .about-stat-row { flex-direction: row !important; align-items: flex-start !important; gap: 4rem !important; }
+          .about-logos { grid-template-columns: 1fr 1fr !important; gap: 2.5rem !important; width: 100%; }
         }
+
       `}</style>
     </section>
   );

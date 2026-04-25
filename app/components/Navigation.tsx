@@ -51,78 +51,85 @@ export default function Navigation() {
           flexShrink: 0,
           display: "flex",
           alignItems: "center",
-          gap: "4px"
+          zIndex: 10
         }}>
           <img
-            src="/navoq3d.png"
+            src="/logos/NavoqFinalLogo-04white.png"
             alt="Navoq Logo"
+            className="logo-desktop"
             style={{
-              height: scrolled ? "50px" : "58px",
+              height: scrolled ? "12rem" : "15rem",
               width: "auto",
               objectFit: "contain",
               transition: "height 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
             }}
           />
-          <div style={{ display: "flex", flexDirection: "column", gap: "0", lineHeight: 0.9 }}>
-            <span style={{
-              fontSize: scrolled ? "1.25rem" : "1.45rem",
-              fontWeight: 800,
-              color: "#fff",
-              letterSpacing: "-0.01em",
-              fontFamily: "var(--font-outfit), sans-serif",
-              textTransform: "uppercase",
-              transition: "font-size 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
-            }}>
-              navoq
-            </span>
-            <span style={{
-              alignSelf: "flex-end",
-              fontSize: scrolled ? "0.6rem" : "0.7rem",
-              fontWeight: 400,
-              fontStyle: "italic",
-              color: "rgba(255,255,255,0.6)",
-              fontFamily: "var(--font-outfit), sans-serif",
-              textTransform: "lowercase",
-              transition: "font-size 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-            }}>
-              media
-            </span>
-          </div>
+          <img
+            src="/logos/NavoqWhiatepng.png"
+            alt="Navoq Logo Mobile"
+            className="logo-mobile"
+            style={{
+              height: "68px",
+              width: "auto",
+              objectFit: "contain",
+              display: "none"
+            }}
+          />
         </Link>
 
-        {/* Desktop Nav */}
-        <nav className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: "0" }}>
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "4px",
-                padding: "0.35rem 0.9rem",
-                fontSize: "0.9375rem",
-                fontWeight: 400,
-                color: "rgba(255,255,255,0.72)",
-                textDecoration: "none",
-                transition: "color 0.2s",
-                whiteSpace: "nowrap",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-              onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.72)")}
-            >
-              {link.label}
-              {link.hasDropdown && (
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ opacity: 0.6 }}>
-                  <path d="M3.5 5.5L7 9L10.5 5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              )}
-            </Link>
-          ))}
-        </nav>
 
-        {/* Contact Us + Hamburger */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
+
+        {/* Desktop Nav / Mobile CTA Center */}
+        <div style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center" }}>
+          <nav className="nav-desktop" style={{ display: "flex", alignItems: "center", gap: "0" }}>
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "4px",
+                  padding: "0.35rem 0.9rem",
+                  fontSize: "0.9375rem",
+                  fontWeight: 400,
+                  color: "rgba(255,255,255,0.72)",
+                  textDecoration: "none",
+                  transition: "color 0.2s",
+                  whiteSpace: "nowrap",
+                }}
+                onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
+                onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.72)")}
+              >
+                {link.label}
+                {link.hasDropdown && (
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style={{ opacity: 0.6 }}>
+                    <path d="M3.5 5.5L7 9L10.5 5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )}
+              </Link>
+            ))}
+          </nav>
+          
+          {/* Mobile Center CTA */}
+          <a
+            href="#contact"
+            className="contact-btn nav-mobile-cta"
+            style={{ display: "none", transform: "scale(0.8)" }}
+          >
+            Contact Us
+            <span className="contact-icon-bg">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 10L10 2M10 2H4M10 2V8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+          </a>
+
+        </div>
+
+
+        {/* Desktop CTA + Hamburger */}
+        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0, zIndex: 10 }}>
           <a
             href="#contact"
             className="nav-desktop contact-btn"
@@ -161,6 +168,7 @@ export default function Navigation() {
             ))}
           </button>
         </div>
+
       </div>
 
       {/* Mobile Menu */}
@@ -200,6 +208,7 @@ export default function Navigation() {
 
       <style>{`
         .contact-btn {
+          position: relative;
           display: inline-flex;
           align-items: center;
           gap: 0.6rem;
@@ -210,8 +219,29 @@ export default function Navigation() {
           font-weight: 600;
           font-size: 0.9375rem;
           text-decoration: none;
-          transition: background 0.2s, transform 0.15s, color 0.2s;
+          transition: transform 0.15s;
           white-space: nowrap;
+          overflow: hidden;
+          z-index: 1;
+        }
+        .contact-btn::before {
+          content: "";
+          position: absolute;
+          right: 1.1rem;
+          top: 50%;
+          width: 28px;
+          height: 28px;
+          background: #c6ff00;
+          border-radius: 50%;
+          transform: translate(0, -50%) scale(0);
+          transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+          z-index: -1;
+        }
+        .contact-btn:hover::before {
+          transform: translate(0, -50%) scale(15);
+        }
+        .contact-btn:hover {
+          transform: translateY(-1px);
         }
         .contact-icon-bg {
           width: 28px;
@@ -223,21 +253,20 @@ export default function Navigation() {
           align-items: center;
           justify-content: center;
           flex-shrink: 0;
-          transition: background 0.2s, color 0.2s;
+          transition: color 0.3s;
         }
-        .contact-btn:hover {
-          background: #c6ff00;
-          transform: translateY(-1px);
-        }
-        .contact-btn:hover .contact-icon-bg {
-          background: #0a0a0a; /* Keep black */
-          color: #c6ff00; /* If we want the arrow to change color to green */
-        }
+
+
         
         @media (max-width: 860px) {
           .nav-desktop { display: none !important; }
           .nav-hamburger { display: flex !important; }
+          .logo-desktop { display: none !important; }
+          .logo-mobile { display: block !important; }
+          .nav-mobile-cta { display: inline-flex !important; }
         }
+
+
       `}</style>
     </header>
   );

@@ -7,7 +7,7 @@ const casesData = [
     heading: "MYSO Finance raised $2.4M and reached 85% user engagement with our design",
     review: {
       stars: 5,
-      text: "Arounda excels with meticulous attention to detail, commitment to excellence, and creative problem-solving. Their inventive solutions captivate visually and significantly enhance the user experience.",
+      text: "navoq excels with meticulous attention to detail, commitment to excellence, and creative problem-solving. Their inventive solutions captivate visually and significantly enhance the user experience.",
       author: "Aetienne Sarlon",
       role: "Founder, MYSO Finance",
       avatar: "https://i.pravatar.cc/100?u=myso"
@@ -41,7 +41,7 @@ const casesData = [
     heading: "Enzyme is a DeFi platform that helps businesses and developers easily create and manage tokenized financial products.",
     review: {
       stars: 5,
-      text: "Working with Arounda is really smooth in terms of communication and workflow.",
+      text: "Working with navoq is really smooth in terms of communication and workflow.",
       author: "Stephane Heip",
       role: "CMO, Enzyme",
       avatar: "https://i.pravatar.cc/100?u=enzyme"
@@ -163,7 +163,7 @@ export default function Cases() {
                         if (targetElement) {
                           if (lenis && typeof lenis.scrollTo === "function") {
                             // Using Lenis for a slow, premium glide
-                            lenis.scrollTo(targetElement, { 
+                            lenis.scrollTo(targetElement, {
                               duration: 2,
                               easing: (t: number) => 1 - Math.pow(1 - t, 4)
                             });
@@ -186,7 +186,7 @@ export default function Cases() {
                         if (targetElement) {
                           if (lenis && typeof lenis.scrollTo === "function") {
                             // Using Lenis for a slow, premium glide
-                            lenis.scrollTo(targetElement, { 
+                            lenis.scrollTo(targetElement, {
                               duration: 2,
                               easing: (t: number) => 1 - Math.pow(1 - t, 4)
                             });
@@ -233,7 +233,7 @@ export default function Cases() {
           <a href="#portfolio" className="cases-explore-btn" aria-label="Explore all cases">
             <span className="cases-explore-icon">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="cases-explore-arrow">
-                <path d="M4 16L16 4M16 4H6M16 4V14" stroke="#0a0a0a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M4 16L16 4M16 4H6M16 4V14" stroke="#0a0a0a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
             <span className="cases-explore-text">Explore all cases</span>

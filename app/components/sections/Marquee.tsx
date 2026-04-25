@@ -19,7 +19,7 @@ export default function Marquee() {
       padding: "2rem 0",
       position: "relative",
     }}>
-      {/* Continuation glow for zoomed-out Arounda look */}
+      {/* Continuation glow for zoomed-out navoq look */}
       <div
         aria-hidden
         style={{
@@ -55,13 +55,13 @@ export default function Marquee() {
         position: "absolute", left: 0, top: 0, bottom: 0, width: "120px", zIndex: 2,
         background: "linear-gradient(to right, #08080a, transparent)",
         pointerEvents: "none",
-      }}/>
+      }} />
       {/* Right fade */}
       <div aria-hidden style={{
         position: "absolute", right: 0, top: 0, bottom: 0, width: "120px", zIndex: 2,
         background: "linear-gradient(to left, #08080a, transparent)",
         pointerEvents: "none",
-      }}/>
+      }} />
 
       <div style={{
         display: "flex",

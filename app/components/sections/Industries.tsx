@@ -1,157 +1,234 @@
 "use client";
+import { useState } from "react";
 
 const industries = [
   {
-    name: "Web3 / Blockchain",
-    icon: "⛓️",
-    color: "#D9FF00",
-    tags: ["dApps", "DeFi", "NFT Platforms", "DAOs", "Smart Contracts", "Crypto Wallets"],
-    desc: "We understand the unique challenges of decentralized products — onboarding non-crypto users, complex transaction flows, and building trust.",
+    name: "Web 3, Blockchain",
+    tags: ["dApps", "DeFi", "Play2Earn", "IoT"]
   },
   {
-    name: "AI & Machine Learning",
-    icon: "🤖",
-    color: "#3B78FF",
-    tags: ["LLM Interfaces", "AI Dashboards", "Data Visualization", "Chatbots", "ML Pipelines", "Model Ops"],
-    desc: "Turning complex AI capabilities into delightfully simple interfaces that users actually want to use — without hiding the power.",
+    name: "AI & ML",
+    tags: ["AI Marketing", "HR & AI", "Crypto AI", "Education AI"]
   },
   {
-    name: "SaaS Platforms",
-    icon: "☁️",
-    color: "#783BFF",
-    tags: ["CRM Systems", "Analytics", "Team Collaboration", "B2B Portals", "Admin Panels", "Onboarding"],
-    desc: "SaaS is our bread and butter. We design scalable design systems and UX flows that reduce churn and boost expansion revenue.",
+    name: "SaaS",
+    tags: ["CRM", "HR", "AI", "ERP", "Automation tools"]
   },
   {
     name: "Fintech",
-    icon: "💳",
-    color: "#59FFD6",
-    tags: ["Trading Platforms", "Banking Apps", "Payment Systems", "Lending", "Insurance Tech", "RegTech"],
-    desc: "Financial products require the perfect balance of trust, compliance, and modern UX. We navigate that complexity fluently.",
+    tags: ["Banking", "Trading", "Exchanges", "IoT"]
   },
+  {
+    name: "Healthcare",
+    tags: ["Mental health", "Wellness", "Insurance", "Fitness"]
+  }
 ];
 
 export default function Industries() {
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
   return (
     <section
       id="industries"
-      className="section-spacing"
-      style={{}}
+      style={{
+        position: "relative",
+        background: "transparent",
+        paddingTop: "clamp(4rem, 7vw, 7rem)",
+        paddingBottom: "clamp(4rem, 7vw, 7rem)",
+        overflow: "hidden",
+      }}
     >
-      <div className="container-site">
-        {/* Header */}
-        <div style={{ marginBottom: "3.5rem" }}>
-          <span
-            className="pill"
-            style={{
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              fontSize: "0.72rem",
-              marginBottom: "1.25rem",
-              display: "inline-flex",
-            }}
-          >
-            Industries & Expertise
-          </span>
-          <h2
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3.25rem)",
-              fontWeight: 700,
+      {/* Bottom right blue/teal gradient */}
+      <div aria-hidden style={{
+        position: "absolute",
+        bottom: "-10%",
+        right: "-5%",
+        width: "60%",
+        height: "80%",
+        pointerEvents: "none",
+        background: "radial-gradient(ellipse at 80% 80%, rgba(20, 160, 200, 0.12) 0%, transparent 65%)",
+        zIndex: 0,
+      }} />
+
+      <div style={{
+        maxWidth: "1440px",
+        margin: "0 auto",
+        padding: "0 clamp(1rem, 3vw, 2rem)",
+        position: "relative",
+        zIndex: 1,
+      }}>
+
+        {/* Top Header Row */}
+        <div style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+          marginBottom: "clamp(3rem, 6vw, 6rem)",
+          gap: "2rem",
+        }}>
+          {/* Left Title */}
+          <div style={{ display: "flex", gap: "1rem", maxWidth: "600px" }}>
+            <span style={{
+              fontSize: "0.85rem",
+              fontWeight: 600,
+              color: "rgba(255,255,255,0.4)",
+              marginTop: "0.5rem",
+              fontFamily: "monospace"
+            }}>
+              {`{/}`}
+            </span>
+            <h2 style={{
+              fontSize: "clamp(2rem, 4vw, 3.5rem)",
+              fontWeight: 600,
+              lineHeight: 1.1,
               letterSpacing: "-0.02em",
-              lineHeight: 1.18,
-              marginTop: "1rem",
-              maxWidth: "560px",
-            }}
-          >
-            Deep expertise in the industries that{" "}
-            <em className="font-serif-italic" style={{ fontWeight: 400 }}>
-              matter most
-            </em>
-          </h2>
+              color: "#fff",
+              margin: 0,
+            }}>
+              Our experience<br />
+              matches <span className="font-serif-italic" style={{ color: "#fff", fontStyle: "italic", fontWeight: 600 }}>your market</span>
+            </h2>
+          </div>
+
+          {/* Right Description */}
+          <div style={{ maxWidth: "420px", marginTop: "1rem" }}>
+            <p style={{
+              fontSize: "0.85rem",
+              fontWeight: 600,
+              lineHeight: 1.6,
+              color: "rgba(255, 255, 255, 0.8)",
+              margin: 0,
+            }}>
+              navoq product designers craft custom solutions that balance your business value with seamless user experience. Only proven industry methods that work.
+            </p>
+          </div>
         </div>
 
-        {/* Industry grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "1.25rem",
-          }}
-        >
-          {industries.map((industry) => (
-            <div
-              key={industry.name}
-              className="card"
-              style={{
-                padding: "2rem",
-                transition: "transform var(--transition-base), border-color var(--transition-base)",
-                cursor: "pointer",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLDivElement).style.transform = "translateY(-4px)";
-                (e.currentTarget as HTMLDivElement).style.borderColor = `${industry.color}33`;
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
-                (e.currentTarget as HTMLDivElement).style.borderColor = "var(--border-card)";
-              }}
-            >
-              {/* Icon + name */}
-              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
+        {/* Bottom Content Row */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1.3fr", // laptop vs list
+          gap: "clamp(2rem, 5vw, 6rem)",
+          alignItems: "flex-end", // Align both columns to the bottom
+        }} className="industries-columns">
+
+          {/* Left Laptop Mockup */}
+          <div style={{
+            background: "#151515",
+            borderRadius: "24px",
+            overflow: "hidden",
+            display: "flex",
+            alignItems: "flex-end", // ensure image touches the bottom of its container
+            justifyContent: "center",
+            width: "100%",
+            maxWidth: "380px", // reduced size
+            margin: "0 auto", // centers it horizontally if column is wider
+            border: "1px solid rgba(255,255,255,0.04)"
+          }}>
+            <img
+              src="https://cdn.prod.website-files.com/65647bbe0d57c8abad78e939/689486c1689a168b1eb53830_experience-image.jpg"
+              alt="navoq Digital Product Experience"
+              style={{ width: "100%", height: "auto", objectFit: "contain", display: "block" }}
+            />
+          </div>
+
+          {/* Right Industry List */}
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {industries.map((ind, i) => {
+              const isHovered = hoveredIdx === i;
+
+              return (
                 <div
+                  key={ind.name}
+                  onMouseEnter={() => setHoveredIdx(i)}
+                  onMouseLeave={() => setHoveredIdx(null)}
                   style={{
-                    width: "48px",
-                    height: "48px",
-                    borderRadius: "14px",
-                    background: `${industry.color}15`,
-                    border: `1px solid ${industry.color}25`,
+                    position: "relative",
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "1.4rem",
+                    justifyContent: "space-between",
+                    padding: "1rem 0rem", // reduced padding for a tighter, sleeker row
+                    paddingRight: "0",
+                    cursor: "pointer",
+                    background: isHovered ? "#d0f601" : "transparent",
+                    borderTop: i === 0 ? "none" : (isHovered ? "1px solid transparent" : "1px solid rgba(255,255,255,0.06)"),
+                    borderTopLeftRadius: isHovered ? "40px" : "0px",
+                    borderBottomLeftRadius: isHovered ? "40px" : "0px",
+                    transition: "all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)",
+                    marginLeft: isHovered ? "-1.5rem" : "0",
+                    paddingLeft: isHovered ? "1.5rem" : "0",
                   }}
                 >
-                  {industry.icon}
+                  {/* Left Name & Arrow */}
+                  <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+
+                    {/* Animated Arrow */}
+                    <div style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: isHovered ? "20px" : "0px",
+                      opacity: isHovered ? 1 : 0,
+                      overflow: "hidden",
+                      transition: "all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)",
+                    }}>
+                      <svg width="18" height="18" viewBox="0 0 12 12" fill="none" style={{ flexShrink: 0 }}>
+                        <path d="M2 10L10 2M10 2H4M10 2V8" stroke="#0a0a0a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+
+                    <h3 style={{
+                      fontSize: "clamp(1.2rem, 2vw, 1.6rem)", // made text smaller
+                      fontWeight: 600,
+                      letterSpacing: "-0.01em",
+                      color: isHovered ? "#000" : "rgba(255,255,255,0.45)",
+                      margin: 0,
+                      transition: "color 0.3s ease",
+                      whiteSpace: "nowrap",
+                    }}>
+                      {ind.name}
+                    </h3>
+                  </div>
+
+                  {/* Right Tags */}
+                  <div style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "flex-end",
+                    gap: "0.35rem",
+                    paddingLeft: "2rem",
+                    paddingRight: isHovered ? "0.5rem" : "0", // push away from the right edge slightly when hovered
+                  }}>
+                    {ind.tags.map(tag => (
+                      <span key={tag} style={{
+                        padding: "0.25em 0.85em", // tighter padding for pill
+                        borderRadius: "20px",
+                        fontSize: "0.6rem", // smaller tag font
+                        fontWeight: 600,
+                        backgroundColor: isHovered ? "rgba(0,0,0,0.05)" : "rgba(255,255,255,0.03)",
+                        color: isHovered ? "rgba(0,0,0,0.8)" : "rgba(255,255,255,0.4)",
+                        transition: "all 0.3s ease",
+                        whiteSpace: "nowrap",
+                      }}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <h3
-                  style={{
-                    fontSize: "1.05rem",
-                    fontWeight: 600,
-                    color: "var(--text-primary)",
-                  }}
-                >
-                  {industry.name}
-                </h3>
-              </div>
-
-              {/* Description */}
-              <p
-                style={{
-                  fontSize: "0.875rem",
-                  color: "var(--text-muted)",
-                  lineHeight: 1.65,
-                  marginBottom: "1.25rem",
-                }}
-              >
-                {industry.desc}
-              </p>
-
-              {/* Tags */}
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
-                {industry.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="tag-pill"
-                    style={{ borderColor: `${industry.color}28`, color: industry.color }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .industries-columns {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

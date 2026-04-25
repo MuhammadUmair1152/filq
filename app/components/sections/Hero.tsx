@@ -45,7 +45,7 @@ function Braces() {
   );
 }
 
-/* ─── Keyword pill — italic serif with hover effects (Arounda style) ──── */
+/* ─── Keyword pill — italic serif with hover effects (navoq style) ──── */
 function AccentWord({
   word,
   isHovered,
@@ -82,7 +82,7 @@ function AccentWord({
     >
       {/* 3 floating orbit icons — render unconditionally but transition opacity/transform */}
       {icons.map((ic, i) => {
-        // Initial offset to match the scattering in Arounda CSS before assembling
+        // Initial offset to match the scattering in navoq CSS before assembling
         let offsetX = "0px", offsetY = "0px";
         if (word === "brand") {
           if (i === 0) { offsetX = "-20px"; offsetY = "-20px"; }
@@ -212,7 +212,7 @@ export default function Hero() {
         background: "transparent",
       }}
     >
-      {/* ── Background layers (Arounda-exact gradients) ── */}
+      {/* ── Background layers (navoq-exact gradients) ── */}
       <div aria-hidden style={{
         position: "absolute", inset: 0, pointerEvents: "none",
         background: "linear-gradient(to bottom, rgba(3,6,20,0.95) 0%, rgba(3,6,20,0.84) 40%, rgba(3,6,20,0.7) 100%)",
@@ -269,7 +269,7 @@ export default function Hero() {
           Digital Product Design And Development Company
         </p>
 
-        {/* ── Main headline — centered, 3-line layout matching Arounda ── */}
+        {/* ── Main headline — centered, 3-line layout matching navoq ── */}
         <h1 style={{
           fontFamily: "var(--font-outfit), sans-serif",
           fontSize: "clamp(2.5rem, 4.8vw, 4.8rem)",
@@ -370,7 +370,7 @@ export default function Hero() {
             </span>
           </span>
           {" "}
-          {/* "product" — italic serif, purple-to-white gradient (Arounda exact) */}
+          {/* "product" — italic serif, purple-to-white gradient (navoq exact) */}
           <em style={{
             fontFamily: "var(--font-baskerville), 'Libre Baskerville', Georgia, serif",
             fontStyle: "italic",
@@ -432,20 +432,20 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* ── Book a Call CTA — right-aligned (Arounda button-primary) ── */}
+        {/* ── Book a Call CTA — right-aligned (navoq button-primary) ── */}
         <div style={{
           display: "flex",
           justifyContent: "flex-end",
           marginTop: "clamp(-3rem, -2vw, -1.5rem)",
           paddingRight: "clamp(16rem, 8vw, 10rem)",
         }} className="hero-cta-row">
-          <ButtonPrimary 
+          <ButtonPrimary
             text="Book a Call"
             href="#contact"
           />
         </div>
 
-        {/* ── Logo Ticker (Arounda: 3 rows × logoloop 60s linear infinite) ── */}
+        {/* ── Logo Ticker (navoq: 3 rows × logoloop 60s linear infinite) ── */}
         <div className="hero_logos-ticker">
           <div className="hero_logos-ticker-row"><TickerRow /></div>
           <div className="hero_logos-ticker-row"><TickerRow /></div>
@@ -470,14 +470,14 @@ export default function Hero() {
           color: #0A0A0A !important;
         }
 
-        /* ── Book a Call button (Arounda button-primary exact) ───── */
+        /* ── Book a Call button (navoq button-primary exact) ───── */
 
         /* Arrow circle */
         .hero-book-arrow {
           width: 54px;
           height: 54px;
           background: #D0F601;
-          border-radius: 0 50% 50% 50%;         /* Arounda initial */
+          border-radius: 0 50% 50% 50%;         /* navoq initial */
           display: flex;
           align-items: center;
           justify-content: center;
@@ -493,14 +493,14 @@ export default function Hero() {
           align-items: center;
           justify-content: center;
           transform: rotate(0deg);
-          transition: transform .45s cubic-bezier(.23,1,.32,1); /* Arounda */
+          transition: transform .45s cubic-bezier(.23,1,.32,1); /* navoq */
         }
         /* Text pill */
 
-        /* Hover — Arounda: arrow→50% 50% 50% 0, icon→-135deg, bg→#fff */
+        /* Hover — navoq: arrow→50% 50% 50% 0, icon→-135deg, bg→#fff */
 
 
-        /* ── Logo ticker (Arounda exact) ──────────────────────────── */
+        /* ── Logo ticker (navoq exact) ──────────────────────────── */
         .hero_logos-ticker {
           display: flex;
           overflow: hidden;
